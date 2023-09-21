@@ -1,0 +1,24 @@
+{
+  "name": "Azure Functions (.NET 6)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [
+    7071
+  ],
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
+  "features": {
+    "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-azurefunctions",
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
