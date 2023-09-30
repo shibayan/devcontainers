@@ -1,5 +1,5 @@
 {
-  "name": "Azure Functions (Node 18)",
+  "name": "Azure Functions (Node.js)",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",

@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: mcr.microsoft.com/devcontainers/dotnet:0-6.0
+    image: mcr.microsoft.com/devcontainers/dotnet:0-6.0-bullseye
     volumes:
       - ..:/workspace:cached
     command: sleep infinity

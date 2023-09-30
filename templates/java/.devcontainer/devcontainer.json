@@ -1,21 +1,24 @@
 {
-  "name": "Azure Functions (Java 11)",
+  "name": "Azure Functions (Java)",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
   "forwardPorts": [
-    7071
+    7071,
+    10000,
+    10001,
+    10002
   ],
   "otherPortsAttributes": {
     "onAutoForward": "ignore"
   },
   "features": {
     "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {},
     "ghcr.io/devcontainers/features/java:1": {
       "version": "none",
       "installMaven": true
-    },
-    "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {}
+    }
   },
   "customizations": {
     "vscode": {
