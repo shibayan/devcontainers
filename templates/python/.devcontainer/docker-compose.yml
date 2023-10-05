@@ -4,7 +4,7 @@ services:
   app:
     image: mcr.microsoft.com/devcontainers/python:1-3.11-bullseye
     volumes:
-      - ..:/workspace:cached
+      - ../..:/workspaces:cached
     command: sleep infinity
     network_mode: service:azurite
 

@@ -4,7 +4,7 @@ services:
   app:
     image: mcr.microsoft.com/devcontainers/dotnet:0-6.0-bullseye
     volumes:
-      - ..:/workspace:cached
+      - ../..:/workspaces:cached
     command: sleep infinity
     network_mode: service:azurite
 

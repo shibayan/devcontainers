@@ -2,7 +2,7 @@
   "name": "Azure Functions (Node.js)",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "forwardPorts": [
     7071,
     10000,
