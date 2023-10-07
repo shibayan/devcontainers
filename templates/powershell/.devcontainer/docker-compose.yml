@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: mcr.microsoft.com/powershell:lts-7.2-debian-bullseye-slim
+    image: mcr.microsoft.com/devcontainers/dotnet:0-6.0-bullseye
     platform: linux/amd64
     volumes:
       - ../..:/workspaces:cached
