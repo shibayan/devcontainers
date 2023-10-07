@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  app:
+    image: mcr.microsoft.com/powershell:lts-7.2-debian-bullseye-slim
+    platform: linux/amd64
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    network_mode: service:azurite
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    restart: unless-stopped
