@@ -1,0 +1,26 @@
+{
+  "id": "azure-functions-node",
+  "version": "1.0.0",
+  "name": "Azure Functions (Node.js)",
+  "description": "Develop JavaScript and TypeScript based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
+  "documentationURL": "https://github.com/shibayan/azure-functions-devcontainers/tree/master/src/node",
+  "publisher": "shibayan",
+  "licenseURL": "https://github.com/shibayan/azure-functions-devcontainers/blob/master/LICENSE",
+  "options": {
+    "imageVariant": {
+      "type": "string",
+      "description": "Node.js version:",
+      "proposals": [
+        "20-bullseye",
+        "18-bullseye"
+      ],
+      "default": "18-bullseye"
+    }
+  },
+  "platforms": [
+    "Azure Functions",
+    "Node.js",
+    "JavaScript",
+    "TypeScript"
+  ]
+}

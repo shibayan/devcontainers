@@ -1,0 +1,26 @@
+{
+  "id": "azure-functions-python",
+  "version": "1.0.0",
+  "name": "Azure Functions (Python)",
+  "description": "Develop Python based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
+  "documentationURL": "https://github.com/shibayan/azure-functions-devcontainers/tree/master/src/python",
+  "publisher": "shibayan",
+  "licenseURL": "https://github.com/shibayan/azure-functions-devcontainers/blob/master/LICENSE",
+  "options": {
+    "imageVariant": {
+      "type": "string",
+      "description": "Python version:",
+      "proposals": [
+        "3.11-bullseye",
+        "3.10-bullseye",
+        "3.9-bullseye",
+        "3.8-bullseye"
+      ],
+      "default": "3.11-bullseye"
+    }
+  },
+  "platforms": [
+    "Azure Functions",
+    "Python"
+  ]
+}

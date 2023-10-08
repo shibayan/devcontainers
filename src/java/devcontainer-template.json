@@ -1,0 +1,25 @@
+{
+  "id": "azure-functions-java",
+  "version": "1.0.0",
+  "name": "Azure Functions (Java)",
+  "description": "Develop Java based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
+  "documentationURL": "https://github.com/shibayan/azure-functions-devcontainers/tree/master/src/java",
+  "publisher": "shibayan",
+  "licenseURL": "https://github.com/shibayan/azure-functions-devcontainers/blob/master/LICENSE",
+  "options": {
+    "imageVariant": {
+      "type": "string",
+      "description": "Java version:",
+      "proposals": [
+        "17-bullseye",
+        "11-bullseye",
+        "8-bullseye"
+      ],
+      "default": "17-bullseye"
+    }
+  },
+  "platforms": [
+    "Azure Functions",
+    "Java"
+  ]
+}
