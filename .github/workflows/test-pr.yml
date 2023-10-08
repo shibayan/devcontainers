@@ -12,11 +12,11 @@ jobs:
         id: filter
         with:
           filters: |
-            dotnet: ./**/dotnet/**
-            java: ./**/java/**
-            node: ./**/node/**
-            powershell: ./**/powershell/**
-            python: ./**/python/**
+            azure-functions-dotnet: ./**/azure-functions-dotnet/**
+            azure-functions-java: ./**/azure-functions-java/**
+            azure-functions-node: ./**/azure-functions-node/**
+            azure-functions-powershell: ./**/azure-functions-powershell/**
+            azure-functions-python: ./**/azure-functions-python/**
 
   test:
     needs: [detect-changes]
