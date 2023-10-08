@@ -2,7 +2,9 @@ version: "3"
 
 services:
   app:
-    image: mcr.microsoft.com/devcontainers/java:1-11-bullseye
+    build:
+      context: .
+      dockerfile: Dockerfile
     platform: linux/amd64
     volumes:
       - ../..:/workspaces:cached
