@@ -1,2 +1,1 @@
-# azure-functions-devcontainers
- 
+# Dev Container templates
