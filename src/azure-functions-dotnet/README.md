@@ -13,4 +13,4 @@ Develop C# and .NET based Azure Functions. Includes all needed SDKs, extensions,
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/shibayan/azure-functions-devcontainers/blob/main/src/azure-functions-dotnet/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/shibayan/devcontainers/blob/main/src/azure-functions-dotnet/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
