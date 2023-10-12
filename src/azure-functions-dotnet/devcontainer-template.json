@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "name": "Azure Functions (.NET)",
   "description": "Develop C# and .NET based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
-  "documentationURL": "https://github.com/shibayan/azure-functions-devcontainers/tree/master/src/dotnet",
+  "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-dotnet",
   "publisher": "shibayan",
-  "licenseURL": "https://github.com/shibayan/azure-functions-devcontainers/blob/master/LICENSE",
+  "licenseURL": "https://github.com/shibayan/devcontainers/blob/master/LICENSE",
   "options": {
     "imageVariant": {
       "type": "string",
