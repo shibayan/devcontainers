@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/dotnet:0-${templateOption:imageVariant}
+FROM mcr.microsoft.com/devcontainers/dotnet:1-${templateOption:imageVariant}
