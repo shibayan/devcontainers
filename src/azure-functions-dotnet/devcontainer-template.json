@@ -11,10 +11,13 @@
       "type": "string",
       "description": ".NET version:",
       "proposals": [
+        "8.0-bookworm",
+        "7.0-bookworm",
+        "6.0-bookworm",
         "7.0-bullseye",
         "6.0-bullseye"
       ],
-      "default": "7.0-bullseye"
+      "default": "8.0-bookworm"
     }
   },
   "platforms": [

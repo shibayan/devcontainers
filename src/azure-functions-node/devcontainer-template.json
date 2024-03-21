@@ -11,10 +11,12 @@
       "type": "string",
       "description": "Node.js version:",
       "proposals": [
+        "20-bookworm",
+        "18-bookworm",
         "20-bullseye",
         "18-bullseye"
       ],
-      "default": "18-bullseye"
+      "default": "20-bookworm"
     }
   },
   "platforms": [

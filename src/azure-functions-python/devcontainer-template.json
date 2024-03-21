@@ -11,12 +11,16 @@
       "type": "string",
       "description": "Python version:",
       "proposals": [
+        "3.11-bookworm",
+        "3.10-bookworm",
+        "3.9-bookworm",
+        "3.8-bookworm",
         "3.11-bullseye",
         "3.10-bullseye",
         "3.9-bullseye",
         "3.8-bullseye"
       ],
-      "default": "3.11-bullseye"
+      "default": "3.11-bookworm"
     }
   },
   "platforms": [
