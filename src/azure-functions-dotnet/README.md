@@ -7,7 +7,7 @@ Develop C# and .NET based Azure Functions. Includes all needed SDKs, extensions,
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| imageVariant | .NET version: | string | 7.0-bullseye |
+| imageVariant | .NET version: | string | 8.0-bookworm |
 
 
 
