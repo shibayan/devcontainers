@@ -7,7 +7,7 @@ Develop JavaScript and TypeScript based Azure Functions. Includes all needed SDK
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| imageVariant | Node.js version: | string | 18-bullseye |
+| imageVariant | Node.js version: | string | 20-bookworm |
 
 
 
