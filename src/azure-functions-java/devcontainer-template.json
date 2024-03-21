@@ -11,11 +11,16 @@
       "type": "string",
       "description": "Java version:",
       "proposals": [
+        "21-bookworm",
+        "17-bookworm",
+        "11-bookworm",
+        "8-bookworm",
+        "21-bullseye",
         "17-bullseye",
         "11-bullseye",
         "8-bullseye"
       ],
-      "default": "17-bullseye"
+      "default": "17-bookworm"
     }
   },
   "platforms": [
