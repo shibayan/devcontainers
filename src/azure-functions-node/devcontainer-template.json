@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-node",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "name": "Azure Functions (Node.js)",
   "description": "Develop JavaScript and TypeScript based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-node",
@@ -24,5 +24,8 @@
     "Node.js",
     "JavaScript",
     "TypeScript"
+  ],
+  "optionalPaths": [
+    ".github/*"
   ]
 }
