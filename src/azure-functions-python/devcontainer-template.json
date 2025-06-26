@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-python",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "name": "Azure Functions (Python)",
   "description": "Develop Python based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-python",
@@ -14,13 +14,7 @@
         "3.12-bookworm",
         "3.11-bookworm",
         "3.10-bookworm",
-        "3.9-bookworm",
-        "3.8-bookworm",
-        "3.12-bullseye",
-        "3.11-bullseye",
-        "3.10-bullseye",
-        "3.9-bullseye",
-        "3.8-bullseye"
+        "3.9-bookworm"
       ],
       "default": "3.12-bookworm"
     }
