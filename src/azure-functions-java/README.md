@@ -7,7 +7,7 @@ Develop Java based Azure Functions. Includes all needed SDKs, extensions, and de
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| imageVariant | Java version: | string | 17-bookworm |
+| imageVariant | Java version: | string | 21-bookworm |
 
 
 
