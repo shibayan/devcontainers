@@ -11,6 +11,7 @@
       "type": "string",
       "description": "Python version:",
       "proposals": [
+        "3.13-bookworm",
         "3.12-bookworm",
         "3.11-bookworm",
         "3.10-bookworm",
