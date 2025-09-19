@@ -18,6 +18,19 @@
         "3.9-bookworm"
       ],
       "default": "3.12-bookworm"
+    },
+    "azureFunctionsCliVersion": {
+      "type": "string",
+      "description": "Azure Functions Core Tools version:",
+      "proposals": [
+        "latest",
+        "4.2.2",
+        "4.2.1",
+        "4.1.2",
+        "4.1.1",
+        "4.1.0"
+      ],
+      "default": "latest"
     }
   },
   "platforms": [

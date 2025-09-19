@@ -13,7 +13,9 @@
     "onAutoForward": "ignore"
   },
   "features": {
-    "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {},
+    "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
+      "version": "${templateOption:azureFunctionsCliVersion}"
+    },
     "ghcr.io/devcontainers/features/powershell:1": {
       "version": "${templateOption:imageVariant}"
     }
