@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-powershell",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "name": "Azure Functions (PowerShell)",
   "description": "Develop PowerShell based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-powershell",
@@ -14,6 +14,19 @@
         "7.4"
       ],
       "default": "7.4"
+    },
+    "azureFunctionsCliVersion": {
+      "type": "string",
+      "description": "Azure Functions Core Tools version:",
+      "proposals": [
+        "latest",
+        "4.2.2",
+        "4.2.1",
+        "4.1.2",
+        "4.1.1",
+        "4.1.0"
+      ],
+      "default": "latest"
     }
   },
   "platforms": [

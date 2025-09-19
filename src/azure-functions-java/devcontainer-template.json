@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-java",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "name": "Azure Functions (Java)",
   "description": "Develop Java based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-java",
@@ -17,6 +17,19 @@
         "8-bookworm"
       ],
       "default": "21-bookworm"
+    },
+    "azureFunctionsCliVersion": {
+      "type": "string",
+      "description": "Azure Functions Core Tools version:",
+      "proposals": [
+        "latest",
+        "4.2.2",
+        "4.2.1",
+        "4.1.2",
+        "4.1.1",
+        "4.1.0"
+      ],
+      "default": "latest"
     }
   },
   "platforms": [
