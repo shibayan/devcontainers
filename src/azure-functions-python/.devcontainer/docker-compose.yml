@@ -3,7 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    platform: linux/amd64
     volumes:
       - ../..:/workspaces:cached
     command: sleep infinity
