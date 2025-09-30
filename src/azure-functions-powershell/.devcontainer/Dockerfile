@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm
+FROM mcr.microsoft.com/devcontainers/dotnet:8.0-bookworm

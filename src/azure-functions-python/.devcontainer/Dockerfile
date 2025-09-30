@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/python:1-${templateOption:imageVariant}
+FROM mcr.microsoft.com/devcontainers/python:${templateOption:imageVariant}
