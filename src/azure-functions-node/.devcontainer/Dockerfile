@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:4-${templateOption:imageVariant}
+FROM mcr.microsoft.com/devcontainers/javascript-node:${templateOption:imageVariant}

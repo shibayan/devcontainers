@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/java:2-${templateOption:imageVariant}
+FROM mcr.microsoft.com/devcontainers/java:${templateOption:imageVariant}
