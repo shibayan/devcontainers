@@ -11,10 +11,11 @@
       "type": "string",
       "description": ".NET version:",
       "proposals": [
-        "9.0-bookworm",
-        "8.0-bookworm"
+        "10.0-noble",
+        "9.0-noble",
+        "8.0-noble"
       ],
-      "default": "8.0-bookworm"
+      "default": "8.0-noble"
     },
     "azureFunctionsCliVersion": {
       "type": "string",

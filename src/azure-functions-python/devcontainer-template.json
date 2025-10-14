@@ -11,13 +11,13 @@
       "type": "string",
       "description": "Python version:",
       "proposals": [
+        "3.14-bookworm",
         "3.13-bookworm",
         "3.12-bookworm",
         "3.11-bookworm",
-        "3.10-bookworm",
-        "3.9-bookworm"
+        "3.10-bookworm"
       ],
-      "default": "3.12-bookworm"
+      "default": "3.13-bookworm"
     },
     "azureFunctionsCliVersion": {
       "type": "string",
