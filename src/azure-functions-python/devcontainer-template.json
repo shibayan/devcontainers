@@ -17,7 +17,7 @@
         "3.11-bookworm",
         "3.10-bookworm"
       ],
-      "default": "3.13-bookworm"
+      "default": "3.12-bookworm"
     },
     "azureFunctionsCliVersion": {
       "type": "string",
