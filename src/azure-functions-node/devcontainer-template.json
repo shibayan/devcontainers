@@ -11,7 +11,7 @@
       "type": "string",
       "description": "Node.js version:",
       "proposals": [
-        "24-bookworm",
+        "24-noble",
         "22-bookworm",
         "20-bookworm"
       ],
