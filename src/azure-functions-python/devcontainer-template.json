@@ -7,21 +7,21 @@
   "publisher": "shibayan",
   "licenseURL": "https://github.com/shibayan/devcontainers/blob/master/LICENSE",
   "options": {
-    "imageVariant": {
+    "pythonVersion": {
       "type": "string",
       "description": "Python version:",
       "proposals": [
-        "3.14-bookworm",
-        "3.13-bookworm",
-        "3.12-bookworm",
-        "3.11-bookworm",
-        "3.10-bookworm"
+        "3.14",
+        "3.13",
+        "3.12",
+        "3.11",
+        "3.10"
       ],
-      "default": "3.12-bookworm"
+      "default": "3.12"
     },
     "azureFunctionsCliVersion": {
       "type": "string",
-      "description": "Azure Functions Core Tools version:",
+      "description": "Azure Functions CLI version:",
       "proposals": [
         "latest",
         "4.3.0",

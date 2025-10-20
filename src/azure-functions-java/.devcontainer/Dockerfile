@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/java:${templateOption:imageVariant}
+FROM mcr.microsoft.com/devcontainers/base:ubuntu

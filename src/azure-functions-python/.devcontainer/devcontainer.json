@@ -13,6 +13,9 @@
     "onAutoForward": "ignore"
   },
   "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "${templateOption:pythonVersion}"
+    },
     "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
       "version": "${templateOption:azureFunctionsCliVersion}"
     }
