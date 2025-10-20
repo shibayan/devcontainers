@@ -14,7 +14,8 @@
   },
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "${templateOption:pythonVersion}"
+      "version": "${templateOption:pythonVersion}",
+      "installTools": false
     },
     "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
       "version": "${templateOption:azureFunctionsCliVersion}"
