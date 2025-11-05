@@ -7,7 +7,7 @@
   "publisher": "shibayan",
   "licenseURL": "https://github.com/shibayan/devcontainers/blob/master/LICENSE",
   "options": {
-    "imageVariant": {
+    "powerShellVersion": {
       "type": "string",
       "description": "PowerShell version:",
       "proposals": [
@@ -17,7 +17,7 @@
     },
     "azureFunctionsCliVersion": {
       "type": "string",
-      "description": "Azure Functions Core Tools version:",
+      "description": "Azure Functions CLI version:",
       "proposals": [
         "latest",
         "4.3.0",

@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:${templateOption:imageVariant}
+FROM mcr.microsoft.com/devcontainers/base:ubuntu

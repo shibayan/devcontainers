@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/python:${templateOption:imageVariant}
+FROM mcr.microsoft.com/devcontainers/base:ubuntu

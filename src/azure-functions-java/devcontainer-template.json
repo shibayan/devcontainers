@@ -7,20 +7,20 @@
   "publisher": "shibayan",
   "licenseURL": "https://github.com/shibayan/devcontainers/blob/master/LICENSE",
   "options": {
-    "imageVariant": {
+    "javaVersion": {
       "type": "string",
       "description": "Java version:",
       "proposals": [
-        "21-bookworm",
-        "17-bookworm",
-        "11-bookworm",
-        "8-bookworm"
+        "21",
+        "17",
+        "11",
+        "8"
       ],
-      "default": "21-bookworm"
+      "default": "21"
     },
     "azureFunctionsCliVersion": {
       "type": "string",
-      "description": "Azure Functions Core Tools version:",
+      "description": "Azure Functions CLI version:",
       "proposals": [
         "latest",
         "4.3.0",

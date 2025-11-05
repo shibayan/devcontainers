@@ -13,12 +13,12 @@
     "onAutoForward": "ignore"
   },
   "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "${templateOption:javaVersion}",
+      "installMaven": true
+    },
     "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
       "version": "${templateOption:azureFunctionsCliVersion}"
-    },
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "none",
-      "installMaven": true
     }
   },
   "customizations": {
