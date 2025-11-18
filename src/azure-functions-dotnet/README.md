@@ -7,7 +7,7 @@ Develop C# and .NET based Azure Functions. Includes all needed SDKs, extensions,
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| imageVariant | .NET version: | string | 8.0-bookworm |
+| dotnetVersion | .NET version: | string | 8.0 |
 | azureFunctionsCliVersion | Azure Functions CLI version: | string | latest |
 
 

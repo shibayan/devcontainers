@@ -7,7 +7,7 @@ Develop JavaScript and TypeScript based Azure Functions. Includes all needed SDK
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| imageVariant | Node.js version: | string | 22-bookworm |
+| nodeVersion | Node.js version: | string | 22 |
 | azureFunctionsCliVersion | Azure Functions CLI version: | string | latest |
 
 
