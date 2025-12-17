@@ -7,7 +7,7 @@ Develop Python based Azure Functions. Includes all needed SDKs, extensions, and 
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| pythonVersion | Python version: | string | 3.12 |
+| pythonVersion | Python version: | string | 3.13 |
 | azureFunctionsCliVersion | Azure Functions CLI version: | string | latest |
 
 
