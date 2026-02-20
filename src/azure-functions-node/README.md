@@ -7,11 +7,11 @@ Develop JavaScript and TypeScript based Azure Functions. Includes all needed SDK
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| nodeVersion | Node.js version: | string | 22 |
+| nodeVersion | Node.js version: | string | 24 |
 | azureFunctionsCliVersion | Azure Functions CLI version: | string | latest |
 
 
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/shibayan/devcontainers/blob/main/src/azure-functions-node/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/shibayan/devcontainers/blob/master/src/azure-functions-node/devcontainer-template.json).  Add additional notes to a `NOTES.md`._

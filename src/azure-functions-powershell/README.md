@@ -14,4 +14,4 @@ Develop PowerShell based Azure Functions. Includes all needed SDKs, extensions, 
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/shibayan/devcontainers/blob/main/src/azure-functions-powershell/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/shibayan/devcontainers/blob/master/src/azure-functions-powershell/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
