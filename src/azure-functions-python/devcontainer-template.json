@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-python",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "name": "Azure Functions (Python)",
   "description": "Develop Python based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-python",
@@ -24,6 +24,7 @@
       "description": "Azure Functions CLI version:",
       "proposals": [
         "latest",
+        "4.7.0",
         "4.6.0",
         "4.5.0",
         "4.4.0",

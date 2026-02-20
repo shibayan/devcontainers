@@ -36,6 +36,9 @@ jobs:
           git config --global user.name github-actions[bot]
           git config pull.rebase false
 
+          # Replace 'blob/main' with 'blob/master' in generated README.md files
+          find src -name 'README.md' -exec sed -i 's|blob/main|blob/master|g' {} +
+
           branch=automated-documentation-update-$GITHUB_RUN_ID
           git checkout -b $branch
           message='Automated documentation update'
