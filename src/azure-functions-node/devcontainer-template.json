@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-node",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "name": "Azure Functions (Node.js)",
   "description": "Develop JavaScript and TypeScript based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-node",
@@ -15,13 +15,14 @@
         "22",
         "20"
       ],
-      "default": "22"
+      "default": "24"
     },
     "azureFunctionsCliVersion": {
       "type": "string",
       "description": "Azure Functions CLI version:",
       "proposals": [
         "latest",
+        "4.7.0",
         "4.6.0",
         "4.5.0",
         "4.4.0",
