@@ -13,7 +13,7 @@ pushd "${SRC_DIR}"
 # Configure templates only if `devcontainer-template.json` contains the `options` property.
 OPTION_PROPERTY=( $(jq -r '.options' devcontainer-template.json) )
 
-if [ "${OPTION_PROPERTY}" != "" ] && [ "${OPTION_PROPERTY}" != "null" ] ; then  
+if [ "${OPTION_PROPERTY}" != "" ] && [ "${OPTION_PROPERTY}" != "null" ] ; then
     OPTIONS=( $(jq -r '.options | keys[]' devcontainer-template.json) )
 
     if [ "${OPTIONS[0]}" != "" ] && [ "${OPTIONS[0]}" != "null" ] ; then
@@ -43,7 +43,7 @@ if [ -d "${TEST_DIR}" ] ; then
     DEST_DIR="${SRC_DIR}/test-project"
     mkdir -p ${DEST_DIR}
     cp -Rp ${TEST_DIR}/* ${DEST_DIR}
-    cp test/test-utils/test-utils.sh ${DEST_DIR}
+    cp test/test-utils/* ${DEST_DIR}
 fi
 
 export DOCKER_BUILDKIT=1

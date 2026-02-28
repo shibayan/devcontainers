@@ -1,10 +1,5 @@
 #!/bin/bash
-cd $(dirname "$0")
-source test-utils.sh
+set -e
 
-# Template specific tests
-check "powershell" pwsh --version
-check "func" func --version
-
-# Report result
-reportResults
+cd "$(dirname "$0")"
+bash run-template-checks.sh "powershell" pwsh --version
