@@ -9,7 +9,7 @@ A collection of [Dev Container Templates](https://containers.dev/implementors/te
 | [Azure Functions (.NET)](./src/azure-functions-dotnet) | C#, .NET | 8.0 / 9.0 / 10.0 |
 | [Azure Functions (Java)](./src/azure-functions-java) | Java | 8 / 11 / 17 / 21 / 25 |
 | [Azure Functions (Node.js)](./src/azure-functions-node) | JavaScript, TypeScript | 20 / 22 / 24 |
-| [Azure Functions (PowerShell)](./src/azure-functions-powershell) | PowerShell | 7.4 |
+| [Azure Functions (PowerShell)](./src/azure-functions-powershell) | PowerShell | 7.4 / 7.6 |
 | [Azure Functions (Python)](./src/azure-functions-python) | Python | 3.10 / 3.11 / 3.12 / 3.13 / 3.14 |
 
 > All templates include the Azure Functions Core Tools (version selectable, default: `latest`).
