@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/dotnet:${templateOption:dotnetVersion}
+FROM mcr.microsoft.com/devcontainers/dotnet:${templateOption:dotnetVersion}-noble
