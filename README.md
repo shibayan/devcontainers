@@ -7,6 +7,7 @@ A collection of [Dev Container Templates](https://containers.dev/implementors/te
 | Template | Languages / Runtimes | Supported Versions |
 | --- | --- | --- |
 | [Azure Functions (.NET)](./src/azure-functions-dotnet) | C#, .NET | 8.0 / 9.0 / 10.0 |
+| [Azure Functions (Go)](./src/azure-functions-go) | Go | 1.24 / 1.25 / 1.26 |
 | [Azure Functions (Java)](./src/azure-functions-java) | Java | 8 / 11 / 17 / 21 / 25 |
 | [Azure Functions (Node.js)](./src/azure-functions-node) | JavaScript, TypeScript | 20 / 22 / 24 |
 | [Azure Functions (PowerShell)](./src/azure-functions-powershell) | PowerShell | 7.4 / 7.6 |
