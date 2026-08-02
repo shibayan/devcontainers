@@ -15,6 +15,8 @@ A collection of [Dev Container Templates](https://containers.dev/implementors/te
 
 > All templates include the Azure Functions Core Tools (version selectable, default: `latest`).
 
+All language runtimes are provided through prebuilt Ubuntu 24.04 images for both AMD64 and ARM64. The templates add the selected Azure Functions Core Tools version when the development container is created.
+
 ## Usage
 
 1. Open the Command Palette in VS Code and select **Dev Containers: Add Dev Container Configuration Files...**

@@ -1,0 +1,11 @@
+{
+  "name": "Azure Functions (PowerShell) Prebuild",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/powershell:1": {
+      "version": "${localEnv:RUNTIME_VERSION}"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Azure Functions (.NET) Prebuild",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "RUNTIME_VERSION": "${localEnv:RUNTIME_VERSION}"
+    }
+  }
+}

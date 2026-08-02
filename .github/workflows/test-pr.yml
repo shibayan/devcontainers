@@ -12,17 +12,46 @@ jobs:
         id: filter
         with:
           filters: |
-            azure-functions-dotnet: ./**/azure-functions-dotnet/**
-            azure-functions-go: ./**/azure-functions-go/**
-            azure-functions-java: ./**/azure-functions-java/**
-            azure-functions-node: ./**/azure-functions-node/**
-            azure-functions-powershell: ./**/azure-functions-powershell/**
-            azure-functions-python: ./**/azure-functions-python/**
+            azure-functions-dotnet:
+              - ./**/azure-functions-dotnet/**
+              - .github/actions/smoke-test/**
+              - .github/workflows/prebuild.yml
+              - test/test-utils/**
+              - .github/workflows/test-pr.yml
+            azure-functions-go:
+              - ./**/azure-functions-go/**
+              - .github/actions/smoke-test/**
+              - .github/workflows/prebuild.yml
+              - test/test-utils/**
+              - .github/workflows/test-pr.yml
+            azure-functions-java:
+              - ./**/azure-functions-java/**
+              - .github/actions/smoke-test/**
+              - .github/workflows/prebuild.yml
+              - test/test-utils/**
+              - .github/workflows/test-pr.yml
+            azure-functions-node:
+              - ./**/azure-functions-node/**
+              - .github/actions/smoke-test/**
+              - .github/workflows/prebuild.yml
+              - test/test-utils/**
+              - .github/workflows/test-pr.yml
+            azure-functions-powershell:
+              - ./**/azure-functions-powershell/**
+              - .github/actions/smoke-test/**
+              - .github/workflows/prebuild.yml
+              - test/test-utils/**
+              - .github/workflows/test-pr.yml
+            azure-functions-python:
+              - ./**/azure-functions-python/**
+              - .github/actions/smoke-test/**
+              - .github/workflows/prebuild.yml
+              - test/test-utils/**
+              - .github/workflows/test-pr.yml
 
   test:
     needs: [detect-changes]
     runs-on: ${{ matrix.os }}
-    continue-on-error: true
     strategy:
       matrix:
         templates: ${{ fromJSON(needs.detect-changes.outputs.templates) }}

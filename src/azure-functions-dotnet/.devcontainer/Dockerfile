@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/dotnet:${templateOption:dotnetVersion}-noble
+FROM ghcr.io/shibayan/devcontainers/azure-functions-dotnet:${templateOption:dotnetVersion}-noble

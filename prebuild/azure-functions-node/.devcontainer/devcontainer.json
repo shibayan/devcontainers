@@ -1,0 +1,11 @@
+{
+  "name": "Azure Functions (Node.js) Prebuild",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "${localEnv:RUNTIME_VERSION}"
+    }
+  }
+}

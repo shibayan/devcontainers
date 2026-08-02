@@ -1,0 +1,12 @@
+{
+  "name": "Azure Functions (Java) Prebuild",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "${localEnv:RUNTIME_VERSION}",
+      "installMaven": true
+    }
+  }
+}

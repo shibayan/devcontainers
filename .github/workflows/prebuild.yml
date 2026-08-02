@@ -1,0 +1,135 @@
+name: "Prebuild Dev Container Images"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - "prebuild/**"
+      - ".github/workflows/prebuild.yml"
+      - "src/*/devcontainer-template.json"
+  schedule:
+    - cron: "23 17 * * 0"
+
+concurrency:
+  group: prebuild-dev-container-images
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    outputs:
+      configs: ${{ steps.matrix.outputs.configs }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Generate prebuild matrix
+        id: matrix
+        shell: bash
+        run: |
+          configs=$(
+            for manifest in src/*/devcontainer-template.json; do
+              template=$(basename "$(dirname "${manifest}")")
+              jq -c --arg template "${template}" '
+                [
+                  .options
+                  | to_entries[]
+                  | select(.key != "azureFunctionsCliVersion")
+                  | .value.proposals[] as $runtime
+                  | { template: $template, runtime: $runtime }
+                ]
+              ' "${manifest}"
+            done | jq -sc 'add'
+          )
+          echo "configs=${configs}" >> "${GITHUB_OUTPUT}"
+
+  build:
+    needs: prepare
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        config: ${{ fromJSON(needs.prepare.outputs.configs) }}
+        os:
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+    env:
+      RUNTIME_VERSION: ${{ matrix.config.runtime }}
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainers/${{ matrix.config.template }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Log in to GitHub Container Registry
+        shell: bash
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
+
+      - name: Install Dev Container CLI
+        shell: bash
+        run: npm install --global @devcontainers/cli
+
+      - name: Build and push architecture image
+        shell: bash
+        env:
+          RUNNER_ARCHITECTURE: ${{ runner.arch }}
+        run: |
+          case "${RUNNER_ARCHITECTURE}" in
+            X64) architecture=amd64 ;;
+            ARM64) architecture=arm64 ;;
+            *) echo "Unsupported runner architecture: ${RUNNER_ARCHITECTURE}" >&2; exit 1 ;;
+          esac
+
+          devcontainer build \
+            --workspace-folder "prebuild/${{ matrix.config.template }}" \
+            --image-name "${IMAGE_NAME}:${RUNTIME_VERSION}-noble-${architecture}" \
+            --label "org.opencontainers.image.source=https://github.com/${GITHUB_REPOSITORY}" \
+            --label "org.opencontainers.image.revision=${GITHUB_SHA}" \
+            --label "org.opencontainers.image.version=${RUNTIME_VERSION}-noble" \
+            --push true
+
+  merge:
+    needs:
+      - prepare
+      - build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        config: ${{ fromJSON(needs.prepare.outputs.configs) }}
+    env:
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainers/${{ matrix.config.template }}
+      RUNTIME_VERSION: ${{ matrix.config.runtime }}
+    steps:
+      - name: Log in to GitHub Container Registry
+        shell: bash
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
+
+      - name: Create multi-architecture image
+        shell: bash
+        run: |
+          tag="${RUNTIME_VERSION}-noble"
+          dated_tag="${tag}-$(date -u +%Y%m%d)"
+          revision_tag="${tag}-sha-${GITHUB_SHA::7}"
+
+          docker buildx imagetools create \
+            --tag "${IMAGE_NAME}:${tag}" \
+            --tag "${IMAGE_NAME}:${dated_tag}" \
+            --tag "${IMAGE_NAME}:${revision_tag}" \
+            "${IMAGE_NAME}:${tag}-amd64" \
+            "${IMAGE_NAME}:${tag}-arm64"
+
+      - name: Verify image platforms
+        shell: bash
+        run: |
+          manifest=$(docker buildx imagetools inspect --raw "${IMAGE_NAME}:${RUNTIME_VERSION}-noble")
+          for architecture in amd64 arm64; do
+            jq -e --arg architecture "${architecture}" '
+              any(.manifests[]; .platform.os == "linux" and .platform.architecture == $architecture)
+            ' <<< "${manifest}" > /dev/null
+          done

@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/base:noble
+FROM ghcr.io/shibayan/devcontainers/azure-functions-java:${templateOption:javaVersion}-noble
