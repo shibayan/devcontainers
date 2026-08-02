@@ -1,0 +1,12 @@
+{
+  "name": "Azure Functions (Python) Prebuild",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "${localEnv:RUNTIME_VERSION}",
+      "installTools": false
+    }
+  }
+}

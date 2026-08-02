@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/dotnet:8.0-noble
+FROM ghcr.io/shibayan/devcontainers/azure-functions-powershell:${templateOption:powerShellVersion}-noble

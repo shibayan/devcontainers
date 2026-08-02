@@ -13,6 +13,26 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      - name: Verify prebuild images
+        shell: bash
+        run: |
+          for manifest_path in src/*/devcontainer-template.json; do
+            template=$(basename "$(dirname "${manifest_path}")")
+            runtime_option=$(jq -r '.options | keys[] | select(. != "azureFunctionsCliVersion")' "${manifest_path}")
+
+            while IFS= read -r runtime_version; do
+              image="ghcr.io/${GITHUB_REPOSITORY_OWNER}/devcontainers/${template}:${runtime_version}-noble"
+              echo "Verifying ${image}"
+              manifest=$(docker buildx imagetools inspect --raw "${image}")
+
+              for architecture in amd64 arm64; do
+                jq -e --arg architecture "${architecture}" '
+                  any(.manifests[]; .platform.os == "linux" and .platform.architecture == $architecture)
+                ' <<< "${manifest}" > /dev/null
+              done
+            done < <(jq -r ".options.${runtime_option}.proposals[]" "${manifest_path}")
+          done
+
       - name: "Publish Templates"
         uses: devcontainers/action@1082abd5d2bf3a11abccba70eef98df068277772 # v1.4.3
         with:

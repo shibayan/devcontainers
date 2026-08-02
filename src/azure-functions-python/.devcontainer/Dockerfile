@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/base:noble
+FROM ghcr.io/shibayan/devcontainers/azure-functions-python:${templateOption:pythonVersion}-noble

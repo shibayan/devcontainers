@@ -1,0 +1,11 @@
+{
+  "name": "Azure Functions (Go) Prebuild",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "${localEnv:RUNTIME_VERSION}"
+    }
+  }
+}

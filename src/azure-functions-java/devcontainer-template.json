@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-java",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "name": "Azure Functions (Java)",
   "description": "Develop Java based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-java",

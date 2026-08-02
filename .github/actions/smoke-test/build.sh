@@ -8,6 +8,26 @@ shopt -s dotglob
 SRC_DIR="/tmp/${TEMPLATE_ID}"
 cp -R "src/${TEMPLATE_ID}" "${SRC_DIR}"
 
+export DOCKER_BUILDKIT=1
+echo "(*) Installing @devcontainer/cli"
+npm install -g @devcontainers/cli
+
+PREBUILD_DIR="prebuild/${TEMPLATE_ID}"
+if [ -d "${PREBUILD_DIR}" ] ; then
+    RUNTIME_OPTION=$(jq -r '.options | keys[] | select(. != "azureFunctionsCliVersion")' "src/${TEMPLATE_ID}/devcontainer-template.json")
+    RUNTIME_VERSION=$(jq -r ".options | .${RUNTIME_OPTION} | .default" "src/${TEMPLATE_ID}/devcontainer-template.json")
+    PREBUILD_IMAGE="ghcr.io/shibayan/devcontainers/${TEMPLATE_ID}:${RUNTIME_VERSION}-noble"
+
+    if [ -z "${RUNTIME_OPTION}" ] || [ -z "${RUNTIME_VERSION}" ] || [ "${RUNTIME_VERSION}" = "null" ] ; then
+        echo "Unable to determine the runtime version for '${TEMPLATE_ID}'"
+        exit 1
+    fi
+
+    echo "(*) Building prebuild image '${PREBUILD_IMAGE}'"
+    export RUNTIME_VERSION
+    devcontainer build --workspace-folder "${PREBUILD_DIR}" --image-name "${PREBUILD_IMAGE}"
+fi
+
 pushd "${SRC_DIR}"
 
 # Configure templates only if `devcontainer-template.json` contains the `options` property.
@@ -45,10 +65,6 @@ if [ -d "${TEST_DIR}" ] ; then
     cp -Rp ${TEST_DIR}/* ${DEST_DIR}
     cp test/test-utils/* ${DEST_DIR}
 fi
-
-export DOCKER_BUILDKIT=1
-echo "(*) Installing @devcontainer/cli"
-npm install -g @devcontainers/cli
 
 echo "Building Dev Container"
 ID_LABEL="test-container=${TEMPLATE_ID}"
