@@ -59,7 +59,7 @@ jobs:
           - ubuntu-24.04-arm
     env:
       RUNTIME_VERSION: ${{ matrix.config.runtime }}
-      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainers/${{ matrix.config.template }}
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainers/${{ matrix.config.template }}-base
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -103,7 +103,7 @@ jobs:
       matrix:
         config: ${{ fromJSON(needs.prepare.outputs.configs) }}
     env:
-      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainers/${{ matrix.config.template }}
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainers/${{ matrix.config.template }}-base
       RUNTIME_VERSION: ${{ matrix.config.runtime }}
     steps:
       - name: Log in to GitHub Container Registry
@@ -133,3 +133,31 @@ jobs:
               any(.manifests[]; .platform.os == "linux" and .platform.architecture == $architecture)
             ' <<< "${manifest}" > /dev/null
           done
+
+  verify-public:
+    needs:
+      - prepare
+      - merge
+    runs-on: ubuntu-24.04
+    env:
+      CONFIGS: ${{ needs.prepare.outputs.configs }}
+    steps:
+      - name: Verify anonymous image access
+        shell: bash
+        run: |
+          failed=false
+          while IFS= read -r config; do
+            template=$(jq -r '.template' <<< "${config}")
+            runtime=$(jq -r '.runtime' <<< "${config}")
+            image="ghcr.io/${GITHUB_REPOSITORY_OWNER}/devcontainers/${template}-base:${runtime}-noble"
+
+            echo "Verifying anonymous access to ${image}"
+            if ! docker buildx imagetools inspect "${image}" > /dev/null; then
+              echo "::error::Package '${template}-base' must be made public in GitHub Packages."
+              failed=true
+            fi
+          done < <(jq -c '.[]' <<< "${CONFIGS}")
+
+          if [ "${failed}" = true ]; then
+            exit 1
+          fi

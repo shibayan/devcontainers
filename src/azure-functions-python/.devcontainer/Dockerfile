@@ -1,1 +1,1 @@
-FROM ghcr.io/shibayan/devcontainers/azure-functions-python:${templateOption:pythonVersion}-noble
+FROM ghcr.io/shibayan/devcontainers/azure-functions-python-base:${templateOption:pythonVersion}-noble
