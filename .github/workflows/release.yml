@@ -21,7 +21,7 @@ jobs:
             runtime_option=$(jq -r '.options | keys[] | select(. != "azureFunctionsCliVersion")' "${manifest_path}")
 
             while IFS= read -r runtime_version; do
-              image="ghcr.io/${GITHUB_REPOSITORY_OWNER}/devcontainers/${template}:${runtime_version}-noble"
+              image="ghcr.io/${GITHUB_REPOSITORY_OWNER}/devcontainers/${template}-base:${runtime_version}-noble"
               echo "Verifying ${image}"
               manifest=$(docker buildx imagetools inspect --raw "${image}")
 

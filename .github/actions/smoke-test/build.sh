@@ -16,7 +16,7 @@ PREBUILD_DIR="prebuild/${TEMPLATE_ID}"
 if [ -d "${PREBUILD_DIR}" ] ; then
     RUNTIME_OPTION=$(jq -r '.options | keys[] | select(. != "azureFunctionsCliVersion")' "src/${TEMPLATE_ID}/devcontainer-template.json")
     RUNTIME_VERSION=$(jq -r ".options | .${RUNTIME_OPTION} | .default" "src/${TEMPLATE_ID}/devcontainer-template.json")
-    PREBUILD_IMAGE="ghcr.io/shibayan/devcontainers/${TEMPLATE_ID}:${RUNTIME_VERSION}-noble"
+    PREBUILD_IMAGE="ghcr.io/shibayan/devcontainers/${TEMPLATE_ID}-base:${RUNTIME_VERSION}-noble"
 
     if [ -z "${RUNTIME_OPTION}" ] || [ -z "${RUNTIME_VERSION}" ] || [ "${RUNTIME_VERSION}" = "null" ] ; then
         echo "Unable to determine the runtime version for '${TEMPLATE_ID}'"

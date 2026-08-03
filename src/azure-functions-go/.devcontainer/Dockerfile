@@ -1,1 +1,1 @@
-FROM ghcr.io/shibayan/devcontainers/azure-functions-go:${templateOption:goVersion}-noble
+FROM ghcr.io/shibayan/devcontainers/azure-functions-go-base:${templateOption:goVersion}-noble
