@@ -8,7 +8,7 @@ echoStderr()
 }
 
 check() {
-    LABEL=$1
+    local LABEL=$1
     shift
     echo -e "\n🧪 Testing $LABEL"
     if "$@"; then 

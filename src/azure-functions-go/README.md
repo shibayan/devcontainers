@@ -7,7 +7,7 @@ Develop Go based Azure Functions. Includes all needed SDKs, extensions, and depe
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| goVersion | Go version: | string | 1.24 |
+| goVersion | Go version: | string | 1.27 |
 | azureFunctionsCliVersion | Azure Functions CLI version: | string | latest |
 
 

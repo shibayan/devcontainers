@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-go",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "name": "Azure Functions (Go)",
   "description": "Develop Go based Azure Functions. Includes all needed SDKs, extensions, and dependencies.",
   "documentationURL": "https://github.com/shibayan/devcontainers/tree/master/src/azure-functions-go",
@@ -11,17 +11,17 @@
       "type": "string",
       "description": "Go version:",
       "proposals": [
-        "1.26",
-        "1.25",
-        "1.24"
+        "1.27",
+        "1.26"
       ],
-      "default": "1.24"
+      "default": "1.27"
     },
     "azureFunctionsCliVersion": {
       "type": "string",
       "description": "Azure Functions CLI version:",
       "proposals": [
         "latest",
+        "4.16.0",
         "4.12.0"
       ],
       "default": "latest"

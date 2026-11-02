@@ -4,6 +4,9 @@ inputs:
   template:
     description: 'Template to test'
     required: true
+  runtime-version:
+    description: 'Runtime version to test (defaults to the template default)'
+    required: false
 
 runs:
   using: composite
@@ -11,9 +14,15 @@ runs:
     - name: Build template
       id: build_template
       shell: bash
-      run: ${{ github.action_path }}/build.sh ${{ inputs.template }}
+      env:
+        TEMPLATE_ID: ${{ inputs.template }}
+        RUNTIME_VERSION: ${{ inputs.runtime-version }}
+      run: bash "${{ github.action_path }}/build.sh" "${TEMPLATE_ID}"
 
     - name: Test template
       id: test_template
       shell: bash
-      run: ${{ github.action_path }}/test.sh  ${{ inputs.template }}
+      env:
+        TEMPLATE_ID: ${{ inputs.template }}
+        RUNTIME_VERSION: ${{ inputs.runtime-version }}
+      run: bash "${{ github.action_path }}/test.sh" "${TEMPLATE_ID}"
