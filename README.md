@@ -13,13 +13,15 @@ A collection of [Dev Container Templates](https://containers.dev/implementors/te
 | [Azure Functions (PowerShell)](./src/azure-functions-powershell) | PowerShell | 7.4 / 7.6 |
 | [Azure Functions (Python)](./src/azure-functions-python) | Python | 3.11 / 3.12 / 3.13 / 3.14 |
 
-> All templates include the Azure Functions Core Tools (version selectable, default: `latest`).
+> All templates include the Azure Functions Core Tools (version selectable, default: `latest`, except Python which defaults to `4.13.0`).
 
 All language runtimes are provided through separate `*-base` prebuilt Ubuntu 24.04 images for both AMD64 and ARM64. The templates add the selected Azure Functions Core Tools version when the development container is created.
 
 ## Runtime support and hosting plans
 
 The default runtimes are .NET 10, Go 1.27, Java 21, Node.js 24, PowerShell 7.6, and Python 3.13. Core Tools 4.16.0 is also available as an explicit version option.
+
+The Python template temporarily pins Core Tools to **4.13.0** on both architectures. Core Tools 4.14.0 through 4.16.0 ship incomplete Python workers on Linux ARM64 and fail during startup. See [upstream issue #5772](https://github.com/Azure/azure-functions-core-tools/issues/5772). Restore `latest` only after a fixed release passes the Python HTTP smoke tests on both architectures.
 
 As of November 3, 2026, .NET 8, .NET 9, and PowerShell 7.4 remain available for existing projects, but their support ends on **November 10, 2026**. Plan to move to .NET 10 (isolated worker) or PowerShell 7.6 before that date. Azure Functions in-process model support also ends on November 10, 2026. Node.js 20, Python 3.10, and Go 1.24/1.25 are no longer offered for new containers because upstream support has ended. Previously published image tags remain available for existing users.
 
