@@ -7,7 +7,7 @@ Develop PowerShell based Azure Functions. Includes all needed SDKs, extensions, 
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| powerShellVersion | PowerShell version: | string | 7.4 |
+| powerShellVersion | PowerShell version: | string | 7.6 |
 | azureFunctionsCliVersion | Azure Functions CLI version: | string | latest |
 
 

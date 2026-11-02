@@ -6,8 +6,10 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      templates: ${{ steps.filter.outputs.changes }}
+      configs: ${{ steps.matrix.outputs.configs }}
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
       - uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         id: filter
         with:
@@ -49,18 +51,40 @@ jobs:
               - test/test-utils/**
               - .github/workflows/test-pr.yml
 
+      - name: Generate runtime test matrix
+        id: matrix
+        env:
+          TEMPLATES: ${{ steps.filter.outputs.changes }}
+        shell: bash
+        run: |
+          configs=$(
+            while IFS= read -r template; do
+              jq -c --arg template "${template}" '
+                .options | to_entries[]
+                | select(.key != "azureFunctionsCliVersion")
+                | .value.proposals[] as $runtime
+                | { template: $template, runtime: $runtime }
+              ' "src/${template}/devcontainer-template.json"
+            done < <(jq -r '.[]' <<< "${TEMPLATES}") | jq -sc '.'
+          )
+          echo "configs=${configs}" >> "${GITHUB_OUTPUT}"
+
   test:
     needs: [detect-changes]
+    if: ${{ needs.detect-changes.outputs.configs != '[]' }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
-        templates: ${{ fromJSON(needs.detect-changes.outputs.templates) }}
+        config: ${{ fromJSON(needs.detect-changes.outputs.configs) }}
         os: [ubuntu-24.04, ubuntu-24.04-arm]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Smoke test for '${{ matrix.templates }}'
+      - name: Smoke test for '${{ matrix.config.template }}' (${{ matrix.config.runtime }})
         id: smoke_test
         uses: ./.github/actions/smoke-test
         with:
-          template: "${{ matrix.templates }}"
+          template: "${{ matrix.config.template }}"
+          runtime-version: "${{ matrix.config.runtime }}"

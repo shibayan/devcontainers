@@ -6,8 +6,21 @@ SRC_DIR="/tmp/${TEMPLATE_ID}"
 echo "Running Smoke Test"
 
 ID_LABEL="test-container=${TEMPLATE_ID}"
-devcontainer exec --workspace-folder "${SRC_DIR}" --id-label ${ID_LABEL} /bin/sh -c 'set -e && if [ -f "test-project/test.sh" ]; then cd test-project && if [ "$(id -u)" = "0" ]; then chmod +x test.sh; else sudo chmod +x test.sh; fi && ./test.sh; else ls -a; fi'
+cleanup() {
+    status=$?
+    trap - EXIT
+    container=$(docker ps -aq --filter "label=${ID_LABEL}" | head -n1) || true
+    if [ -n "${container}" ]; then
+        project=$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}' "${container}") || true
+        if [ -n "${project}" ]; then
+            docker compose --project-name "${project}" -f "${SRC_DIR}/.devcontainer/docker-compose.yml" down --volumes || true
+        fi
+    fi
+    rm -rf "${SRC_DIR}"
+    exit "${status}"
+}
+trap cleanup EXIT
 
-# Clean up
-docker rm -f $(docker container ls -f "label=${ID_LABEL}" -q)
-rm -rf "${SRC_DIR}"
+devcontainer exec --workspace-folder "${SRC_DIR}" --id-label "${ID_LABEL}" \
+    --remote-env "EXPECTED_RUNTIME_VERSION=${RUNTIME_VERSION:-}" \
+    /bin/bash -c 'set -e; cd test-project; bash test.sh'

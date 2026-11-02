@@ -15,7 +15,10 @@ npm install -g @devcontainers/cli
 PREBUILD_DIR="prebuild/${TEMPLATE_ID}"
 if [ -d "${PREBUILD_DIR}" ] ; then
     RUNTIME_OPTION=$(jq -r '.options | keys[] | select(. != "azureFunctionsCliVersion")' "src/${TEMPLATE_ID}/devcontainer-template.json")
-    RUNTIME_VERSION=$(jq -r ".options | .${RUNTIME_OPTION} | .default" "src/${TEMPLATE_ID}/devcontainer-template.json")
+    RUNTIME_VERSION=${RUNTIME_VERSION:-$(jq -r ".options | .${RUNTIME_OPTION} | .default" "src/${TEMPLATE_ID}/devcontainer-template.json")}
+    jq -e --arg option "${RUNTIME_OPTION}" --arg version "${RUNTIME_VERSION}" \
+        '.options[$option].proposals | index($version) != null' \
+        "src/${TEMPLATE_ID}/devcontainer-template.json" > /dev/null
     PREBUILD_IMAGE="ghcr.io/shibayan/devcontainers/${TEMPLATE_ID}-base:${RUNTIME_VERSION}-noble"
 
     if [ -z "${RUNTIME_OPTION}" ] || [ -z "${RUNTIME_VERSION}" ] || [ "${RUNTIME_VERSION}" = "null" ] ; then
@@ -42,6 +45,9 @@ if [ "${OPTION_PROPERTY}" != "" ] && [ "${OPTION_PROPERTY}" != "null" ] ; then
         do
             OPTION_KEY="\${templateOption:$OPTION}"
             OPTION_VALUE=$(jq -r ".options | .${OPTION} | .default" devcontainer-template.json)
+            if [ "${OPTION}" = "${RUNTIME_OPTION}" ]; then
+                OPTION_VALUE="${RUNTIME_VERSION}"
+            fi
 
             if [ "${OPTION_VALUE}" = "" ] || [ "${OPTION_VALUE}" = "null" ] ; then
                 echo "Template '${TEMPLATE_ID}' is missing a default value for option '${OPTION}'"
